@@ -159,27 +159,30 @@ public class LoginVIEW extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 private void logar() {
         try {
+            //declaração de variavel
             String user_email, user_senha;
+            //recebendo valores dos campos
             user_email = c_email.getText();
             user_senha = c_senha.getText();
-
+            //declaração do obj
             UserDTO objuserdto = new UserDTO();
             //setando valores 
             objuserdto.setUser_email(user_email);
             objuserdto.setUser_senha(user_senha);
-
+            //declaração do obj
             UserDAO objuserdao = new UserDAO();
             //executa o UserDTO e amarzena o result em rsuserdao
             ResultSet rsuserdao = objuserdao.autenticacaoUser(objuserdto);
 
             if (rsuserdao.next()) {
+                //Pegando dados do usuario
                 String tipo = rsuserdao.getString("user_type");
                 int id = rsuserdao.getInt("id");
-
                 switch (tipo) {
                     case "ADM" -> {
                         //adiciona no set valor id do user
                         objuserdto.setId_usuario(id);
+                        objuserdto.setUser_tipo(tipo);
                         DashboardADMVIEW objdashboardadmview = new DashboardADMVIEW();
                         objdashboardadmview.Pegarid(objuserdto);
 
@@ -187,9 +190,17 @@ private void logar() {
                         dispose();
                     }
                     case "FUNCIONARIO" -> {
+                        //adiciona no set valor id do user
+                        objuserdto.setId_usuario(id);
+                        objuserdto.setUser_tipo(tipo);
+                        DashboardFuncionarioVIEW objdashboardadmview = new DashboardFuncionarioVIEW();
+                        objdashboardadmview.Pegarid(objuserdto);
+
+                        objdashboardadmview.setVisible(true);
+                        dispose();
                     }
                     default -> {
-                        //cliente
+
                     }
                 }
 

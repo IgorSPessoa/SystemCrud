@@ -72,4 +72,70 @@ public class PedidosDAO {
         return lista;
     }
 
+    public void updatepedido(PedidosDTO objpedidosdto) {
+        String sql = "UPDATE pedidos set user_name = ?, user_email = ?,order_created = ?,date_order = ?, created_by = ?, type_pedido = ?,street = ?, city = ?,house_number = ?  WHERE id = ?";
+        conn = new conexaoDAO().conectar();
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, objpedidosdto.getNome());
+            pstm.setString(2, objpedidosdto.getEmail());
+            pstm.setString(3, objpedidosdto.getDatacriada());
+            pstm.setString(4, objpedidosdto.getDatacoleta());
+            pstm.setInt(5, objpedidosdto.getCriadopor());
+            pstm.setString(6, objpedidosdto.getTipo());
+            pstm.setString(7, objpedidosdto.getRua());
+            pstm.setString(8, objpedidosdto.getCidade());
+            pstm.setInt(9, objpedidosdto.getNumcasa());
+            pstm.setInt(10, objpedidosdto.getId());
+
+            pstm.execute();
+            pstm.close();
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "FuncionarioDAO updatepedido: " + erro);
+        }
+    }
+
+    public void deletapedido(PedidosDTO objpedidosdto) {
+        String sql = "DELETE from pedidos WHERE id = ?";
+        conn = new conexaoDAO().conectar();
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, objpedidosdto.getId());
+
+            pstm.execute();
+            pstm.close();
+            JOptionPane.showMessageDialog(null, "Deletado com sucesso!");
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "PedidosDAO deletapedido: " + erro);
+        }
+    }
+
+    public ResultSet totalid() {
+        conn = new conexaoDAO().conectar();
+        String sql = "select id from pedidos";
+        try {
+            pstm = conn.prepareStatement(sql);
+            return pstm.executeQuery();
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "PedidosDAO totalid: " + erro);
+            return null;
+        }
+    }
+
+    public ResultSet tipos() {
+        conn = new conexaoDAO().conectar();
+        String sql = "select type_pedido from pedidos";
+        try {
+            pstm = conn.prepareStatement(sql);
+            return pstm.executeQuery();
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "PedidosDAO tipos: " + erro);
+            return null;
+        }
+    }
 }

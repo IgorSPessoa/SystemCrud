@@ -5,17 +5,12 @@
 package system.VIEW;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
-import system.DAO.FuncionarioDAO;
 import system.DAO.PedidosDAO;
-import system.DTO.FuncionarioDTO;
 import system.DTO.PedidosDTO;
 import system.DTO.UserDTO;
 
@@ -23,20 +18,19 @@ import system.DTO.UserDTO;
  *
  * @author igor_
  */
-public class DashboardADMVIEW extends javax.swing.JFrame {
+public class DashboardFuncionarioVIEW extends javax.swing.JFrame {
 
     /**
-     * Creates new form DashboardVIEW
+     * Creates new form DashboardFuncionarioVIEW
      */
-    public DashboardADMVIEW() {
+    public DashboardFuncionarioVIEW() {
         initComponents();
+
         setTitle("E-cologic Eletronics");
         setLocationRelativeTo(null);
-        listafuncionarios();
         listapedidos();
         odernar();
     }
-    //Declara variaveis de sessão
     public int id_sessao;
     public String email_sessao, tipo_sessao;
 
@@ -98,27 +92,6 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
         c_datacriada_pedido = new javax.swing.JTextField();
         c_datacoleta_pedido = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        funcionarios = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabela_funcionario = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        c_id = new javax.swing.JTextField();
-        c_email = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        c_nome = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        c_senha = new javax.swing.JPasswordField();
-        btn_cadastrar = new javax.swing.JButton();
-        btn_upadate = new javax.swing.JButton();
-        btn_deletar = new javax.swing.JButton();
-        btn_atualizar = new javax.swing.JButton();
-        btn_limpar = new javax.swing.JButton();
-        cbx_tipo = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/system/imgs/icon.png")).getImage());
@@ -242,13 +215,13 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
                     .addGroup(inicioLayout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
                             .addGroup(inicioLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(emailuser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(emailuser, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel23))))
                 .addGap(101, 101, 101)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inicioLayout.setVerticalGroup(
             inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +237,7 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
                         .addComponent(emailuser, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100)
                         .addComponent(email_logado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Inicio", inicio);
@@ -385,7 +358,7 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(0, 136, Short.MAX_VALUE)
+                                .addGap(0, 135, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(c_nome_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -414,7 +387,7 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel16)
                                     .addComponent(cbx_tipo_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addComponent(jLabel17)
@@ -518,196 +491,13 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Pedidos", pedidos);
 
-        funcionarios.setBackground(new java.awt.Color(204, 255, 204));
-        funcionarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        tabela_funcionario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "NOME", "EMAIL", "SENHA", "TIPO"
-            }
-        ));
-        tabela_funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabela_funcionarioMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tabela_funcionario);
-
-        jLabel6.setText("NOME:");
-
-        jLabel7.setText("EMAIL:");
-
-        jLabel8.setText("TIPO DE ACESSO:");
-
-        c_id.setEnabled(false);
-
-        jLabel1.setText("ID:");
-
-        jLabel2.setText("SENHA:");
-
-        btn_cadastrar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_cadastrar.setText("Cadastrar");
-        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastrarActionPerformed(evt);
-            }
-        });
-
-        btn_upadate.setBackground(new java.awt.Color(255, 255, 255));
-        btn_upadate.setText("Upadate");
-        btn_upadate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_upadateActionPerformed(evt);
-            }
-        });
-
-        btn_deletar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_deletar.setText("Deletar");
-        btn_deletar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_deletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_deletarActionPerformed(evt);
-            }
-        });
-
-        btn_atualizar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_atualizar.setText("Atualizar");
-        btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_atualizarActionPerformed(evt);
-            }
-        });
-
-        btn_limpar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_limpar.setText("Limpar");
-        btn_limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limparActionPerformed(evt);
-            }
-        });
-
-        cbx_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADM", "FUNCIONARIO" }));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setText("Crud funcionarios/administradores");
-
-        javax.swing.GroupLayout funcionariosLayout = new javax.swing.GroupLayout(funcionarios);
-        funcionarios.setLayout(funcionariosLayout);
-        funcionariosLayout.setHorizontalGroup(
-            funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
-            .addComponent(jSeparator1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, funcionariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_upadate, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-            .addGroup(funcionariosLayout.createSequentialGroup()
-                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel5))
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(c_email, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(c_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(funcionariosLayout.createSequentialGroup()
-                                .addComponent(c_id, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(c_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(funcionariosLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(83, 83, 83))
-        );
-        funcionariosLayout.setVerticalGroup(
-            funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, funcionariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_deletar)
-                    .addComponent(btn_limpar)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(c_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
-                    .addGroup(funcionariosLayout.createSequentialGroup()
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_atualizar)
-                            .addComponent(btn_upadate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(funcionariosLayout.createSequentialGroup()
-                                .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(funcionariosLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(c_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(c_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(btn_cadastrar)))
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(c_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(funcionariosLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(25, 25, 25)))
-                        .addGap(31, 31, 31)))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane2.addTab("Funcionarios", funcionarios);
-
         jDesktopPane1.setLayer(jTabbedPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -718,46 +508,23 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limparActionPerformed
-        zerarcampos();
-        listafuncionarios();
-    }//GEN-LAST:event_btn_limparActionPerformed
-
-    private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
-        listafuncionarios();
-    }//GEN-LAST:event_btn_atualizarActionPerformed
-
-    private void btn_deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletarActionPerformed
-        deletafuncionario();
-        listafuncionarios();
-        zerarcampos();
-    }//GEN-LAST:event_btn_deletarActionPerformed
-
-    private void btn_upadateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upadateActionPerformed
-        updatefuncionario();
-        listafuncionarios();
-        zerarcampos();
-    }//GEN-LAST:event_btn_upadateActionPerformed
-
-    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        cadastrarfuncionario();
-        listafuncionarios();
-        zerarcampos();
-    }//GEN-LAST:event_btn_cadastrarActionPerformed
-
-    private void tabela_funcionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_funcionarioMouseClicked
-        carregarcampos();
-    }//GEN-LAST:event_tabela_funcionarioMouseClicked
+    private void jTabbedPane2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPane2AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane2AncestorAdded
 
     private void cbx_tipo_pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tipo_pedidoActionPerformed
         // TODO add your handling code here:
@@ -798,10 +565,6 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
         carregarcampospedidos();
     }//GEN-LAST:event_tabela_pedidoMouseClicked
 
-    private void jTabbedPane2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPane2AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane2AncestorAdded
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ids();
         tipos();
@@ -818,75 +581,60 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardADMVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFuncionarioVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardADMVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFuncionarioVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardADMVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFuncionarioVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardADMVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFuncionarioVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardADMVIEW().setVisible(true);
+                new DashboardFuncionarioVIEW().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_atualiza_pedido;
-    private javax.swing.JButton btn_atualizar;
-    private javax.swing.JButton btn_cadastrar;
     private javax.swing.JButton btn_cadastrar_pedido;
-    private javax.swing.JButton btn_deletar;
     private javax.swing.JButton btn_deletar_pedido;
-    private javax.swing.JButton btn_limpar;
     private javax.swing.JButton btn_limpar_pedido;
-    private javax.swing.JButton btn_upadate;
     private javax.swing.JButton btn_upadate_pedido;
     private javax.swing.JTextField c_cidade_pedido;
     private javax.swing.JTextField c_criadopor_pedido;
     private javax.swing.JTextField c_datacoleta_pedido;
     private javax.swing.JTextField c_datacriada_pedido;
-    private javax.swing.JTextField c_email;
     private javax.swing.JTextField c_email_pedido;
-    private javax.swing.JTextField c_id;
     private javax.swing.JTextField c_id_pedido;
-    private javax.swing.JTextField c_nome;
     private javax.swing.JTextField c_nome_pedido;
     private javax.swing.JTextField c_numcasa_pedido;
     private javax.swing.JTextField c_rua_pedido;
-    private javax.swing.JPasswordField c_senha;
-    private javax.swing.JComboBox<String> cbx_tipo;
     private javax.swing.JComboBox<String> cbx_tipo_pedido;
     private javax.swing.JLabel email_logado;
     private javax.swing.JLabel emailuser;
-    private javax.swing.JPanel funcionarios;
     private javax.swing.JPanel inicio;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -896,19 +644,12 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel pedidos;
-    private javax.swing.JTable tabela_funcionario;
     private javax.swing.JTable tabela_pedido;
     private javax.swing.JLabel total_g;
     private javax.swing.JLabel total_ids;
@@ -929,123 +670,8 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
     public void odernar() {
         DefaultTableModel modelo1 = (DefaultTableModel) tabela_pedido.getModel();
         tabela_pedido.setRowSorter(new TableRowSorter(modelo1));
-
-        DefaultTableModel modelo2 = (DefaultTableModel) tabela_funcionario.getModel();
-        tabela_funcionario.setRowSorter(new TableRowSorter(modelo2));
     }
 
-    private void carregarcampos() {
-        try {
-            int linha = tabela_funcionario.getSelectedRow();
-            c_id.setText(tabela_funcionario.getModel().getValueAt(linha, 0).toString());
-            c_nome.setText(tabela_funcionario.getModel().getValueAt(linha, 1).toString());
-            c_email.setText(tabela_funcionario.getModel().getValueAt(linha, 2).toString());
-            c_senha.setText(tabela_funcionario.getModel().getValueAt(linha, 3).toString());
-            cbx_tipo.setSelectedItem(tabela_funcionario.getModel().getValueAt(linha, 4).toString());
-        } catch (ArrayIndexOutOfBoundsException | java.lang.NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Selecione uma linha válida da tabela");
-        }
-    }
-
-    private void cadastrarfuncionario() {
-        try {
-
-            String nome, email, senha, tipo;
-
-            nome = c_nome.getText();
-            email = c_email.getText();
-            senha = c_senha.getText();
-            tipo = cbx_tipo.getSelectedItem().toString();
-
-            FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
-
-            objfuncionariodto.setNome(nome);
-            objfuncionariodto.setEmail(email);
-            objfuncionariodto.setSenha(senha);
-            objfuncionariodto.setTipo(tipo);
-
-            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
-            objfuncionariodao.cadastrofuncionario(objfuncionariodto);
-
-        } catch (java.lang.NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Campos não podem ser vazio!");
-        }
-
-    }
-
-    private void listafuncionarios() {
-        try {
-            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
-            DefaultTableModel model = (DefaultTableModel) tabela_funcionario.getModel();
-            model.setNumRows(0);
-
-            ArrayList<FuncionarioDTO> lista = objfuncionariodao.listarfuncionario();
-
-            for (int i = 0; i < lista.size(); i++) {
-                model.addRow(new Object[]{
-                    lista.get(i).getId(),
-                    lista.get(i).getNome(),
-                    lista.get(i).getEmail(),
-                    lista.get(i).getSenha(),
-                    lista.get(i).getTipo()
-                });
-            }
-
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "listafuncionarios: " + erro);
-        }
-    }
-
-    private void updatefuncionario() {
-        try {
-            int id;
-            String nome, email, senha, tipo;
-
-            id = Integer.parseInt(c_id.getText());
-            nome = c_nome.getText();
-            email = c_email.getText();
-            senha = c_senha.getText();
-            tipo = cbx_tipo.getSelectedItem().toString();
-
-            FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
-            objfuncionariodto.setId(id);
-            objfuncionariodto.setNome(nome);
-            objfuncionariodto.setEmail(email);
-            objfuncionariodto.setSenha(senha);
-            objfuncionariodto.setTipo(tipo);
-
-            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
-            objfuncionariodao.updatefuncionario(objfuncionariodto);
-
-        } catch (java.lang.NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Selecione um funcionario para alterar!");
-        }
-    }
-
-    private void deletafuncionario() {
-        try {
-            int id;
-
-            id = Integer.parseInt(c_id.getText());
-
-            FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
-            objfuncionariodto.setId(id);
-
-            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
-            objfuncionariodao.deletafuncionario(objfuncionariodto);
-
-        } catch (java.lang.NumberFormatException erro) {
-            JOptionPane.showMessageDialog(null, "Selecione um funcionario para deletar!");
-        }
-    }
-
-    private void zerarcampos() {
-        c_id.setText("");
-        c_nome.setText("");
-        c_email.setText("");
-        c_senha.setText("");
-        cbx_tipo.setSelectedItem("Selecione");
-    }
 
     /*
     
@@ -1252,4 +878,5 @@ public class DashboardADMVIEW extends javax.swing.JFrame {
         }
 
     }
+
 }

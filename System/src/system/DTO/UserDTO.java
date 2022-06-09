@@ -1,9 +1,9 @@
-    package system.DTO;
+package system.DTO;
 
 public class UserDTO {
 
     private int id_usuario;
-    private String user_email, user_senha;
+    private String user_email, user_senha, user_tipo;
 
     public int getId_usuario() {
         return id_usuario;
@@ -27,6 +27,14 @@ public class UserDTO {
 
     public void setUser_senha(String user_senha) {
         this.user_senha = user_senha;
+    }
+
+    public String getUser_tipo() {
+        return user_tipo;
+    }
+
+    public void setUser_tipo(String user_tipo) {
+        this.user_tipo = user_tipo;
     }
 
 }
